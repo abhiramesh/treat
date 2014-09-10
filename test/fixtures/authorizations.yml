@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  provider: MyString
+  uid: MyString
+  expires_at: 2014-09-10 17:58:15
+
+two:
+  user_id: 1
+  provider: MyString
+  uid: MyString
+  expires_at: 2014-09-10 17:58:15
