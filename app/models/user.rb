@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :auth_token
 
-  has_many :authorizations
+  has_many :authorizations, dependent: :destroy
 
-  before_save :ensure_authentication_token
+  before_save :ensure_auth_token
 
   def ensure_auth_token
     if auth_token.blank?
@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
       token = SecureRandom.hex
       break token unless User.where(auth_token: token).first
     end
+  end
+
+  def sent_gifts
+    Gift.where(sender_id: self.id)
+  end
+
+  def received_gifts
+    Gift.where(recipient_id: self.id)
   end
 
 end

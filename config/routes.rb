@@ -1,5 +1,6 @@
 Treat::Application.routes.draw do
 
+
   devise_for :users
 
   root :to => 'static_pages#home'
@@ -7,7 +8,10 @@ Treat::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
+      resources :gifts
       post '/login', :controller => 'users', :action => 'login'
+      get '/my_sent_gifts', :controller => 'gifts', :action => 'my_sent_gifts'
+      get '/my_received_gifts', :controller => 'gifts', :action => 'my_received_gifts'
     end
   end
 

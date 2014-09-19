@@ -11,15 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140910215815) do
+ActiveRecord::Schema.define(:version => 20140919160752) do
 
   create_table "authorizations", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
     t.datetime "expires_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "oauth_token"
+  end
+
+  create_table "gifts", :force => true do |t|
+    t.string   "name"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.string   "recipient_phone"
+    t.string   "amount"
+    t.boolean  "redeemed"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
